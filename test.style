@@ -1,0 +1,12 @@
+canvas {
+  width = 800
+  height = 700
+}
+
+forall Element x {
+  shape x.icon = Rectangle {
+    width:60
+    height:60
+  }
+
+}

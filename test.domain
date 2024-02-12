@@ -1,0 +1,3 @@
+type Element
+
+predicate node(Element e1, Element e2)
