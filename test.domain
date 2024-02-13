@@ -1,3 +1,5 @@
 type Element
-
-predicate node(Element e1, Element e2)
+type Array
+type Index
+predicate In (Element e, Array a)
+predicate IndexOf(Element e, Index i, Number n)

@@ -1,12 +1,51 @@
 canvas {
-  width = 800
-  height = 700
+  width = 600
+  height = 600
+}
+colours {
+   black = rgba( 0, 0, 0, 1 )
+   white = rgba( 0, 0, 0, 0 )
+}
+globals{
+  origin = 0
 }
 
-forall Element x {
-  shape x.icon = Rectangle {
-    width:60
-    height:60
+collect Element e into array
+where In(e, a)
+foreach Array a {
+    widths = listof labelWidth from array
+    max_width = maxList(widths)
+    a.element_width = max_width
+}
+
+forall Element e; Index i; Number n; Array a
+where IndexOf(e, i, n) {
+  scalar index_width = a.element_width + 5
+  scalar e.x = n*index_width - 220
+  shape e.elementLabel = Text {
+    string: e.label
+    center: (e.x, 0)
+    fontSize: "16px"
+    fillColor: colours.black
+   }
+  scalar e.labelWidth = e.elementLabel.width
+  shape e.icon = Rectangle {
+    center: e.elementLabel.center
+    width:e.elementLabel.width
+    height:20
+    fillColor: colours.white
+    strokeColor: rgba(0, 0, 0, 1)
+    strokeWidth: 2
+    width: a.element_width + 5
+    height: 20
+
   }
+  shape e.indexLabel = Text {
+    string: i.label
+    center: (e.x, -20)
+    fontSize: "16px"
+    fillColor: colours.black
+   }
+
 
 }
