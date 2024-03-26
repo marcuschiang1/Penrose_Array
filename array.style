@@ -1,15 +1,15 @@
+-- Canvas namespace
 canvas {
   width = 600
   height = 600
 }
+-- Colour namespace to easily access black and white instead of typing rbga(...) every time
 colours {
    black = rgba( 0, 0, 0, 1 )
    white = rgba( 0, 0, 0, 0 )
 }
-globals{
-  origin = 0
-}
-
+-- This collects every element in an array and creates a list of the widths
+-- The maximum width is then found to use in the image
 collect Element e into array
 where In(e, a)
 foreach Array a {
@@ -17,18 +17,25 @@ foreach Array a {
     max_width = maxList(widths)
     a.element_width = max_width
 }
-
+-- For all elements, indices and their values, as well as the array
 forall Element e; Index i; Number n; Array a
+-- Where this predicate holds
 where IndexOf(e, i, n) {
+  -- This stores the max width found in the previous collect block
   scalar index_width = a.element_width + 5
+  -- This is the centering x-coordinate that is used for each index
+  -- The -220 is just the offset so the array is in the frame
   scalar e.x = n*index_width - 220
+  -- The shape that holds the element text
   shape e.elementLabel = Text {
     string: e.label
     center: (e.x, 0)
     fontSize: "16px"
     fillColor: colours.black
    }
+  -- The stored label width that is used to find the max width in the previous collect block
   scalar e.labelWidth = e.elementLabel.width
+  -- The shape that contains each element text
   shape e.icon = Rectangle {
     center: e.elementLabel.center
     width:e.elementLabel.width
@@ -40,6 +47,7 @@ where IndexOf(e, i, n) {
     height: 20
 
   }
+  -- The shape that represents each corresponding index
   shape e.indexLabel = Text {
     string: i.label
     center: (e.x, -20)

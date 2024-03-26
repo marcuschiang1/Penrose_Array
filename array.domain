@@ -1,5 +1,7 @@
+-- Each type is declared here
 type Element
 type Array
 type Index
+-- Predicates that relate elements to their indices and arrays to their elements
 predicate In (Element e, Array a)
 predicate IndexOf(Element e, Index i, Number n)

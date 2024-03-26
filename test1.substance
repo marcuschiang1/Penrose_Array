@@ -1,0 +1,5 @@
+Array a_1 
+Element e_i for i in [0,4] 
+Index i_j for j in [0,4] 
+IndexOf(e_j, i_j, j) for j in [0,4] 
+In(e_j, a_1) for i in [0,4] 
