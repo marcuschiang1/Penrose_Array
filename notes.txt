@@ -1,7 +1,9 @@
 changed the use of Number n to scalar match_id since n is not allowed in compilation using npx
 
 want to do:
-- Highlight middle elements for binary search
-- Make it look nicer
+- Make it look nicer*
 - Change orientation for stack
 - Multiple arrays per diagram
+- Call from the command line
+	- Args would be a substance file name and an array
+- testing

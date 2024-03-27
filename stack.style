@@ -1,0 +1,81 @@
+-- Canvas namespace
+canvas {
+  width = 600
+  height = 600
+}
+-- Colour namespace to easily access black and white instead of typing rbga(...) every time
+colours {
+   black = rgba( 0, 0, 0, 1 )
+   white = rgba( 0, 0, 0, 0 )
+   lightGray = rgba(.8, .85, .9, 0.5)
+
+   mediumGray = rgba(.6, .6, .6, 1.0)
+   darkGray = rgba(.4, .4, .4, 1.0)
+   red = rgba(0.95, 0.25, 0.12, 1.0)
+   red_transparent = rgba(0.95, 0.25, 0.12, .25)  
+   green = rgba(0.2, 0.55, 0.24, 1.0)
+   none = rgba(0.0, 0.0, 0.0, 0.0)
+}
+globals{
+  height = 20
+  x = -220
+}
+-- This collects every element in an array and creates a list of the widths
+-- The maximum width is then found to use in the image
+collect Element e into array
+where In(e, a)
+foreach Array a {
+    widths = listof labelWidth from array
+    max_width = maxList(widths)
+    a.element_width = max_width
+}
+-- For all elements, indices and their values, as well as the array
+
+forall Element e; Index i; Array a
+-- Where this predicate holds
+where IndexOf(e, i) {
+  -- This stores the max width found in the previous collect block
+  scalar index_width = a.element_width + 5
+  -- This is the centering x-coordinate that is used for each index
+  -- The -220 is just the offset so the array is in the frame
+  
+  -- The shape that holds the element text
+  shape e.elementLabel = Text {
+    -- The element value
+    string: e.label
+    center: (globals.x, match_id*globals.height)
+    fontSize: "16px"
+    -- The element text
+    fillColor: colours.black
+   }
+  -- The stored label width that is used to find the max width in the previous collect block
+  scalar e.labelWidth = e.elementLabel.width
+  -- The shape that contains each element text
+  shape e.icon = Rectangle {
+    center: e.elementLabel.center
+    width:e.elementLabel.width
+    height:20
+    fillColor: colours.white
+    strokeColor: rgba(0, 0, 0, 1)
+    strokeWidth: 1
+    width: a.element_width + 2
+    cornerRadius: 2.0
+
+  }
+  -- The shape that represents each corresponding index
+  shape e.indexLabel = Text {
+    string: i.label
+    center: (globals.x - 40, match_id*globals.height)
+    fontSize: "16px"
+    fillColor: colours.black
+   }
+
+
+}
+forall Element e; Index i
+where Top(e, i){
+  e.icon.fillColor = colours.red_transparent
+  e.icon.strokewidth = 2
+}
+
+
