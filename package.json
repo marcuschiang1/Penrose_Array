@@ -1,7 +1,0 @@
-{
-  "type": "module",
-  "dependencies": {
-    "penrose": "^0.2.41"
-  }
-  
-}
