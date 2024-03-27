@@ -4,4 +4,6 @@ type Array
 type Index
 -- Predicates that relate elements to their indices and arrays to their elements
 predicate In (Element e, Array a)
-predicate IndexOf(Element e, Index i, Number n)
+predicate IndexOf(Element e, Index i)
+-- Predicate for center elements in binary search
+predicate Middle(Element e, Index i)

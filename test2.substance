@@ -1,21 +1,11 @@
 Array a_1 
-Element e_i for i in [0,7] 
-Index i_j for j in [0,7] 
-IndexOf(e_j, i_j, j) for j in [0,7] 
-In(e_j, a_1) for i in [0,7] 
+Element e_i for i in [0,2] 
+Index i_j for j in [0,2] 
+IndexOf(e_j, i_j) for j in [0,2] 
+In(e_i, a_1) for i in [0,2] 
 Label i_0 $0$
 Label i_1 $1$
 Label i_2 $2$
-Label i_3 $3$
-Label i_4 $4$
-Label i_5 $5$
-Label i_6 $6$
-Label i_7 $7$
-Label e_0 $10$
-Label e_1 $hello$
-Label e_2 $wdd$
-Label e_3 $50000$
-Label e_4 $50$
-Label e_5 $60$
-Label e_6 $70$
-Label e_7 $80$
+Label e_0 $1$
+Label e_1 $hi$
+Label e_2 $3$

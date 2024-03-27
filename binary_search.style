@@ -7,6 +7,14 @@ canvas {
 colours {
    black = rgba( 0, 0, 0, 1 )
    white = rgba( 0, 0, 0, 0 )
+   lightGray = rgba(.8, .85, .9, 0.5)
+
+   mediumGray = rgba(.6, .6, .6, 1.0)
+   darkGray = rgba(.4, .4, .4, 1.0)
+   red = rgba(0.95, 0.25, 0.12, 1.0)
+   red_transparent = rgba(0.95, 0.25, 0.12, .25)  
+   green = rgba(0.2, 0.55, 0.24, 1.0)
+   none = rgba(0.0, 0.0, 0.0, 0.0)
 }
 -- This collects every element in an array and creates a list of the widths
 -- The maximum width is then found to use in the image
@@ -18,6 +26,7 @@ foreach Array a {
     a.element_width = max_width
 }
 -- For all elements, indices and their values, as well as the array
+
 forall Element e; Index i; Array a
 -- Where this predicate holds
 where IndexOf(e, i) {
@@ -28,9 +37,11 @@ where IndexOf(e, i) {
   scalar e.x = match_id*index_width - 220
   -- The shape that holds the element text
   shape e.elementLabel = Text {
+    -- The element value
     string: e.label
     center: (e.x, 0)
     fontSize: "16px"
+    -- The element text
     fillColor: colours.black
    }
   -- The stored label width that is used to find the max width in the previous collect block
@@ -42,8 +53,9 @@ where IndexOf(e, i) {
     height:20
     fillColor: colours.white
     strokeColor: rgba(0, 0, 0, 1)
-    strokeWidth: 2
-    width: a.element_width + 5
+    strokeWidth: 1
+    width: a.element_width + 2
+    cornerRadius: 2.0
     height: 20
 
   }
@@ -57,3 +69,10 @@ where IndexOf(e, i) {
 
 
 }
+forall Element e; Index i
+where Middle(e, i){
+  e.icon.fillColor = colours.red_transparent
+  e.icon.strokewidth = 2
+}
+
+
