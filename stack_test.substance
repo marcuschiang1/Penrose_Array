@@ -1,0 +1,14 @@
+Array a_1 
+Element e_i for i in [0,3] 
+Index i_j for j in [0,3] 
+IndexOf(e_j, i_j) for j in [0,3] 
+In(e_i, a_1) for i in [0,3] 
+Label i_0 $0$
+Label i_1 $1$
+Label i_2 $2$
+Label i_3 $3$
+Label e_0 $1$
+Label e_1 $Hello$
+Label e_2 $wooraaaaa$
+Label e_3 $3$
+Top(e_3, i_3)

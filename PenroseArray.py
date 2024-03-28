@@ -1,7 +1,9 @@
 import os
+import subprocess
 from pathlib import Path
 import subprocess
 class PenroseArray:
+    #Holds array
     def __init__(self, array):
         self.array = array
 
@@ -27,6 +29,23 @@ class PenroseArray:
         f.writelines(e_labels)
         f.close()
 
+    def penrose_stack(self, file_name):
+        #Run generate in case it has not been run yet
+        self.generate_substance(file_name)
+        #Store length for use in string creation
+        length = len(self.array)
+        #Open file for appending, most of it already written by generate
+        f = open(file_name, "a")
+        f.write("Top(e_"+str(length-1)+", i_"+str(length-1)+")\n")
+        f.close()
+        command = "npx @penrose/roger trio domain/array.domain style/stack.style stack_test.substance > stack_test.svg"
+
+        # Execute the command
+        result = subprocess.run(command, shell=True, capture_output=True, text=True)
+
+        # Print the output
+        print("Command output:", result.stdout)        
+
     #this function highlights the middle index/indices for display in binary search
     def binary_search(self, file_name):
         #Run generate in case it has not been run yet
@@ -41,11 +60,11 @@ class PenroseArray:
             
             f.writelines([
                 "Middle(e_"+str(int(middle-1))+","+"i_"+str(int(middle-1))+")\n",
-                "Middle(e_"+str(int(middle))+","+"i_"+str(int(middle))+")"
+                "Middle(e_"+str(int(middle))+","+"i_"+str(int(middle))+")\n"
             ])
         #Odd length array
         else:
-            f.write("Middle(e_"+str(int(middle-.5))+","+"i_"+str(int(middle-.5))+")")
+            f.write("Middle(e_"+str(int(middle-.5))+","+"i_"+str(int(middle-.5))+")\n")
         f.close()
 
 
@@ -53,7 +72,6 @@ class PenroseArray:
         #Declare empty arrays to fill with strings
         i_labels = [None]*len(self.array)
         e_labels = [None]*len(self.array)
-        print(i_labels)
         for i in range(len(self.array)):
             i_labels[i] = "Label i_"+str(i)+" $"+str(i)+"$\n"
         for i in range(len(self.array)):
@@ -62,10 +80,9 @@ class PenroseArray:
         return i_labels, e_labels    
         
 def main():
-    array = [1,"hi",3, 4]
+    array = [1, "Hello", "wooraaaaa", 3]
     example = PenroseArray(array)
-    example.binary_search("binary_search.substance")
-    print(array)
+    example.penrose_stack("stack_test.substance")
     
         
 

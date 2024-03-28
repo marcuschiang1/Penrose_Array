@@ -1,9 +1,16 @@
 changed the use of Number n to scalar match_id since n is not allowed in compilation using npx
 
 want to do:
+- Stack function for the script
 - Make it look nicer*
-- Change orientation for stack
 - Multiple arrays per diagram
 - Call from the command line
 	- Args would be a substance file name and an array
 - testing
+
+Need to do:
+- :) wub girlfrand <3
+- text my girlfrand 
+- make her shitty sketti
+- send pics to girlfriend
+- Look at girlfrand pics on snnap
