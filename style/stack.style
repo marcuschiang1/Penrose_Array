@@ -22,13 +22,13 @@ globals{
 }
 -- This collects every element in an array and creates a list of the widths
 -- The maximum width is then found to use in the image
-collect Element e into array
-where In(e, a)
-foreach Array a {
-    widths = listof labelWidth from array
-    max_width = maxList(widths)
-    a.element_width = max_width
-}
+-- collect Element e into array
+-- where In(e, a)
+-- foreach Array a {
+--     widths = listof labelWidth from array
+--     max_width = maxList(widths)
+--     a.element_width = max_width
+-- }
 -- For all elements, indices and their values, as well as the array
 
 forall Element e; Index i; Array a
@@ -58,7 +58,7 @@ where IndexOf(e, i) {
     fillColor: colours.white
     strokeColor: rgba(0, 0, 0, 1)
     strokeWidth: 1
-    width: a.element_width + 2
+    width: index_width
     cornerRadius: 2.0
 
   }
