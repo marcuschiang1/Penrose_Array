@@ -18,7 +18,7 @@ colours {
 }
 globals{
   height = 20
-  x = -220
+  x = 0
 }
 -- This collects every element in an array and creates a list of the widths
 -- The maximum width is then found to use in the image
@@ -35,7 +35,7 @@ forall Element e; Index i; Array a
 -- Where this predicate holds
 where IndexOf(e, i) {
   -- This stores the max width found in the previous collect block
-  scalar index_width = a.element_width + 5
+  scalar index_width = 25
   -- This is the centering x-coordinate that is used for each index
   -- The -220 is just the offset so the array is in the frame
   
@@ -65,7 +65,7 @@ where IndexOf(e, i) {
   -- The shape that represents each corresponding index
   shape e.indexLabel = Text {
     string: i.label
-    center: (globals.x - 40, match_id*globals.height)
+    center: (globals.x - e.icon.width, match_id*globals.height)
     fontSize: "16px"
     fillColor: colours.black
    }

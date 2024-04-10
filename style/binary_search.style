@@ -31,7 +31,7 @@ forall Element e; Index i; Array a
 -- Where this predicate holds
 where IndexOf(e, i) {
   -- This stores the max width found in the previous collect block
-  scalar index_width = a.element_width + 5
+  scalar index_width = 25
   -- This is the centering x-coordinate that is used for each index
   -- The -220 is just the offset so the array is in the frame
   scalar e.x = match_id*index_width - 220

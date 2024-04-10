@@ -1,0 +1,8 @@
+Array a_1 
+Element e_i for i in [0,0] 
+Index i_j for j in [0,0] 
+IndexOf(e_j, i_j) for j in [0,0] 
+In(e_i, a_1) for i in [0,0] 
+Label i_0 $0$
+Label e_0 $50$
+Middle(e_0,i_0)

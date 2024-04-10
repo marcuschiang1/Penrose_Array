@@ -1,10 +1,8 @@
 import os
-import subprocess
 from pathlib import Path
-import subprocess
 class PenroseArray:
     #Holds array
-    def __init__(self, array):
+    def __init__(self, array = []):
         self.array = array
 
     def generate_substance(self, file_name):
@@ -31,23 +29,20 @@ class PenroseArray:
 
     def penrose_stack(self, file_name):
         #Run generate in case it has not been run yet
-        self.generate_substance(file_name)
+        self.penrose_binary_search(file_name)
         #Store length for use in string creation
         length = len(self.array)
         #Open file for appending, most of it already written by generate
         f = open(file_name, "a")
         f.write("Top(e_"+str(length-1)+", i_"+str(length-1)+")\n")
         f.close()
-        command = "npx @penrose/roger trio domain/array.domain style/stack.style stack_test.substance > stack_test.svg"
-
-        # Execute the command
-        result = subprocess.run(command, shell=True, capture_output=True, text=True)
-
-        # Print the output
-        print("Command output:", result.stdout)        
+        #Potential way to run the roger command line and generate the svg from within the python script
+        #The command to execute
+        # command = "roger trio domain/array.domain style/stack.style stack_test.substance > stack_test.svg"
+        # result = subprocess.run(command, shell=True, capture_output=True, text=True)
 
     #this function highlights the middle index/indices for display in binary search
-    def binary_search(self, file_name):
+    def penrose_binary_search(self, file_name):
         #Run generate in case it has not been run yet
         self.generate_substance(file_name)
         #Store length for use in string creation
@@ -55,9 +50,11 @@ class PenroseArray:
         #Open file for appending, most of it already written by generate
         f = open(file_name, "a")
         middle = length/2
+        #When the array is sliced to a single element
+        if length == 1:
+            f.write("Middle(e_0,i_0)\n")
         #Even length array
-        if length%2 == 0:
-            
+        elif length%2 == 0:
             f.writelines([
                 "Middle(e_"+str(int(middle-1))+","+"i_"+str(int(middle-1))+")\n",
                 "Middle(e_"+str(int(middle))+","+"i_"+str(int(middle))+")\n"
@@ -66,7 +63,6 @@ class PenroseArray:
         else:
             f.write("Middle(e_"+str(int(middle-.5))+","+"i_"+str(int(middle-.5))+")\n")
         f.close()
-
 
     def create_labels(self):
         #Declare empty arrays to fill with strings
@@ -79,11 +75,3 @@ class PenroseArray:
         #Return an array for both index labels and element labels
         return i_labels, e_labels    
         
-def main():
-    array = [1, "Hello", "wooraaaaa", 3]
-    example = PenroseArray(array)
-    example.penrose_stack("stack_test.substance")
-    
-        
-
-main()
