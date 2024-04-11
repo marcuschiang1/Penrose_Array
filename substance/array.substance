@@ -7,9 +7,7 @@ Label i_0 $0$
 Label i_1 $1$
 Label i_2 $2$
 Label i_3 $3$
-Label e_0 $10$
+Label e_0 $12$
 Label e_1 $20$
-Label e_2 $30$
-Label e_3 $50$
-Top(e_3, i_3)
-Top(e_3, i_3)
+Label e_2 $50$
+Label e_3 $60$

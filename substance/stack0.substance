@@ -13,5 +13,5 @@ Label e_1 $20$
 Label e_2 $30$
 Label e_3 $50$
 Label e_4 $90$
-Middle(e_2,i_2)
+Top(e_4, i_4)
 Top(e_4, i_4)

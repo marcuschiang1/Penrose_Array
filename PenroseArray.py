@@ -28,8 +28,6 @@ class PenroseArray:
         f.close()
 
     def penrose_stack(self, file_name):
-        #Run generate in case it has not been run yet
-        self.penrose_binary_search(file_name)
         #Store length for use in string creation
         length = len(self.array)
         #Open file for appending, most of it already written by generate
@@ -74,4 +72,3 @@ class PenroseArray:
             e_labels[i] = "Label e_"+str(i)+" $"+str(self.array[i])+"$\n"
         #Return an array for both index labels and element labels
         return i_labels, e_labels    
-        

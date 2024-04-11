@@ -1,7 +1,7 @@
 -- Canvas namespace
 canvas {
-  width = 600
-  height = 600
+  width = 200
+  height = 200
 }
 -- Colour namespace to easily access black and white instead of typing rbga(...) every time
 colours {
@@ -34,7 +34,7 @@ where IndexOf(e, i) {
   scalar index_width = 25
   -- This is the centering x-coordinate that is used for each index
   -- The -220 is just the offset so the array is in the frame
-  scalar e.x = match_id*index_width - 220
+  scalar e.x = match_id*index_width - 60
   -- The shape that holds the element text
   shape e.elementLabel = Text {
     -- The element value
@@ -44,12 +44,10 @@ where IndexOf(e, i) {
     -- The element text
     fillColor: colours.black
    }
-  -- The stored label width that is used to find the max width in the previous collect block
-  scalar e.labelWidth = e.elementLabel.width
+
   -- The shape that contains each element text
   shape e.icon = Rectangle {
     center: e.elementLabel.center
-    width:e.elementLabel.width
     height:20
     fillColor: colours.white
     strokeColor: rgba(0, 0, 0, 1)
